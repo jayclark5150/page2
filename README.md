@@ -13,7 +13,7 @@ brew tap jayclark5150/tap
 brew install --cask page2
 ```
 
-Or download `Page2-0.2.0.dmg` from the
+Or download `Page2-0.2.1.dmg` from the
 [latest release](https://github.com/jayclark5150/page2/releases/latest), open it,
 and drag Page 2 into Applications. See First launch below to get past Gatekeeper.
 
