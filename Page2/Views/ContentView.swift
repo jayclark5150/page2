@@ -12,8 +12,13 @@ struct ContentView: View {
         @Bindable var coordinator = coordinator
 
         NavigationSplitView {
-            List(SidebarItem.allCases, selection: $coordinator.selection) { item in
-                Label(item.title, systemImage: item.systemImage).tag(Optional(item))
+            // Use ForEach plus tag, not the List(data, selection:) form. Mixing
+            // the data parameter with explicit tags stops taps from updating the
+            // selection, which left Blindspot and Sources unreachable by touch.
+            List(selection: $coordinator.selection) {
+                ForEach(SidebarItem.allCases) { item in
+                    Label(item.title, systemImage: item.systemImage).tag(item)
+                }
             }
             .navigationTitle("Page 2")
             .frame(minWidth: 180)
