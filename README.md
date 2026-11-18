@@ -36,6 +36,15 @@ xcodebuild -scheme Page2 -destination 'platform=macOS' build
 
 Or open `Page2.xcodeproj` in Xcode and run.
 
+## First launch
+
+The app is ad-hoc signed with no Apple Developer ID, so macOS Gatekeeper blocks
+it the first time. Trust it either way:
+
+- In System Settings: open the app once, then go to System Settings, Privacy and
+  Security, scroll to the message about Page 2, and click Open Anyway.
+- In the terminal: `xattr -dr com.apple.quarantine /Applications/Page2.app`
+
 ## Test
 
 ```sh
