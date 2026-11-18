@@ -4,6 +4,22 @@ A personal news reader for Mac, iPad, and iPhone. It pulls RSS feeds, clusters
 related articles into stories, labels each outlet left, center, or right, and
 highlights blindspots where one side barely covered a story.
 
+## Install on Mac
+
+With Homebrew:
+
+```sh
+brew tap jayclark5150/tap
+brew install --cask page2
+```
+
+Or download `Page2-0.2.0.dmg` from the
+[latest release](https://github.com/jayclark5150/page2/releases/latest), open it,
+and drag Page 2 into Applications. See First launch below to get past Gatekeeper.
+
+For iPad and iPhone, build from source with Xcode. See the install steps further
+down.
+
 ## Features
 
 - Reads RSS 2.0 and Atom feeds from a curated list of outlets.
