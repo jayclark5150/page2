@@ -72,7 +72,7 @@ final class FeedRefresher {
     var hasSourceErrors: Bool { !sourceErrors.isEmpty }
 
     private func enabledSourceRefs(in context: ModelContext) throws -> [FeedSourceRef] {
-        let descriptor = FetchDescriptor<Source>(predicate: #Predicate { $0.isEnabled })
+        let descriptor = FetchDescriptor<Source>(predicate: #Predicate { $0.isEnabled && !$0.isDeleted })
         let sources = try context.fetch(descriptor)
         return sources.compactMap { source in
             guard let url = source.feedURL else { return nil }
