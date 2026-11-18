@@ -3,22 +3,18 @@ options:
   bundleIdPrefix: com.jayclark
   deploymentTarget:
     macOS: "14.0"
+    iOS: "17.0"
   createIntermediateGroups: true
 settings:
   base:
     SWIFT_VERSION: "5.0"
-    MACOSX_DEPLOYMENT_TARGET: "14.0"
 targets:
   Page2:
     type: application
-    platform: macOS
+    # One multiplatform target that builds for Mac, iPad, and iPhone.
+    supportedDestinations: [macOS, iOS]
     sources:
       - Page2
-    entitlements:
-      path: Page2/Page2.entitlements
-      properties:
-        com.apple.security.app-sandbox: true
-        com.apple.security.network.client: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.jayclark.page2
@@ -27,10 +23,20 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         INFOPLIST_KEY_CFBundleDisplayName: Page 2
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.news
-        ENABLE_HARDENED_RUNTIME: YES
-        CODE_SIGN_STYLE: Automatic
-        MARKETING_VERSION: "0.1.0"
-        CURRENT_PROJECT_VERSION: "1"
+        # iOS needs a generated launch screen and sensible orientations.
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        # Entitlements only apply to the macOS sandbox build.
+        "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]": Page2/Page2.entitlements
+        "ENABLE_HARDENED_RUNTIME[sdk=macosx*]": YES
+        # Ad-hoc signing so it builds with no Apple Developer account. For
+        # installing on an iPhone or iPad, open in Xcode and pick your own
+        # personal team under Signing and Capabilities (free provisioning).
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: "-"
+        MARKETING_VERSION: "0.2.0"
+        CURRENT_PROJECT_VERSION: "2"
   Page2Tests:
     type: bundle.unit-test
     platform: macOS
@@ -43,6 +49,9 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         PRODUCT_BUNDLE_IDENTIFIER: com.jayclark.page2.tests
         SWIFT_VERSION: "5.0"
+        # The app is multiplatform, so point the host at the macOS bundle layout.
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Page2.app/Contents/MacOS/Page2"
+        BUNDLE_LOADER: "$(TEST_HOST)"
 schemes:
   Page2:
     build:

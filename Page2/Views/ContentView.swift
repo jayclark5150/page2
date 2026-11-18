@@ -6,6 +6,7 @@ struct ContentView: View {
     @Environment(AppCoordinator.self) private var coordinator
     @State private var refresher = FeedRefresher()
     @State private var didSeed = false
+    @State private var showingSettings = false
 
     var body: some View {
         @Bindable var coordinator = coordinator
@@ -20,15 +21,47 @@ struct ContentView: View {
             detail(for: coordinator.selection ?? .stories)
                 .safeAreaInset(edge: .bottom) { errorBar }
                 .toolbar {
-                    ToolbarItem(placement: .status) { progressStatus }
+                    ToolbarItem(placement: statusPlacement) { progressStatus }
                     ToolbarItem(placement: .primaryAction) { refreshButton }
+                    #if os(iOS)
+                    ToolbarItem(placement: .primaryAction) { settingsButton }
+                    #endif
                 }
         }
         .task { await startup() }
         .onChange(of: coordinator.refreshToken) {
             Task { await refresher.refresh(context: modelContext) }
         }
+        #if os(iOS)
+        .sheet(isPresented: $showingSettings) {
+            NavigationStack {
+                SettingsView()
+                    .navigationTitle("Settings")
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Done") { showingSettings = false }
+                        }
+                    }
+            }
+        }
+        #endif
     }
+
+    private var statusPlacement: ToolbarItemPlacement {
+        #if os(macOS)
+        .status
+        #else
+        .automatic
+        #endif
+    }
+
+    #if os(iOS)
+    private var settingsButton: some View {
+        Button { showingSettings = true } label: {
+            Label("Settings", systemImage: "gearshape")
+        }
+    }
+    #endif
 
     @ViewBuilder
     private func detail(for item: SidebarItem) -> some View {

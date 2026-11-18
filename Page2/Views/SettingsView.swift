@@ -33,8 +33,10 @@ struct SettingsView: View {
             }
         }
         .formStyle(.grouped)
+        #if os(macOS)
         .frame(width: 400)
         .scenePadding()
+        #endif
     }
 }
 

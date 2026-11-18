@@ -1,6 +1,6 @@
 # Build Page 2 (macOS news app)
 
-You are building Page 2, a personal macOS app for one user (Jay). It works like Ground News: it pulls articles from RSS feeds, groups related articles into story clusters, labels each outlet as left, center, or right, and has a Blindspot view for stories that one side barely covered.
+You are building Page 2, a personal macOS app for one user (Jay). It pulls articles from RSS feeds, groups related articles into story clusters, labels each outlet as left, center, or right, and has a Blindspot view for stories that one side barely covered.
 
 ## Locked decisions
 - Native SwiftUI, macOS 14 or newer, SwiftData for storage. No third-party dependencies unless I approve one.

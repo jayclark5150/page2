@@ -9,11 +9,15 @@ struct Page2App: App {
         WindowGroup {
             ContentView()
                 .environment(coordinator)
+                #if os(macOS)
                 .frame(minWidth: 820, minHeight: 520)
+                #endif
         }
         .modelContainer(for: [Source.self, Article.self, Story.self])
+        #if os(macOS)
         .defaultSize(width: 1100, height: 720)
         .windowResizability(.contentMinSize)
+        #endif
         .commands {
             // Refresh and section navigation from the menu bar, with shortcuts.
             CommandGroup(after: .sidebar) {
@@ -30,8 +34,10 @@ struct Page2App: App {
             }
         }
 
+        #if os(macOS)
         Settings {
             SettingsView()
         }
+        #endif
     }
 }

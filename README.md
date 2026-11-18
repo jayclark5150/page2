@@ -1,8 +1,8 @@
 # Page 2
 
-A personal macOS news reader in the style of Ground News. It pulls RSS feeds,
-clusters related articles into stories, labels each outlet left, center, or
-right, and highlights blindspots where one side barely covered a story.
+A personal news reader for Mac, iPad, and iPhone. It pulls RSS feeds, clusters
+related articles into stories, labels each outlet left, center, or right, and
+highlights blindspots where one side barely covered a story.
 
 ## Features
 
@@ -19,9 +19,13 @@ right, and highlights blindspots where one side barely covered a story.
 
 ## Requirements
 
-- macOS 14 or newer
+- macOS 14 or newer, or iPadOS or iOS 17 or newer
 - Xcode 15 or newer
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen)
+
+Page 2 is a single multiplatform app. The same code runs on Mac, iPad, and
+iPhone. On Mac it uses a resizable window and the menu bar. On iPad and iPhone
+the sidebar collapses into navigation and Settings opens as a sheet.
 
 ## Build and run
 
@@ -31,10 +35,31 @@ The Xcode project is generated from `project.yml`. Do not hand edit the
 ```sh
 brew install xcodegen
 xcodegen
+
+# Mac
 xcodebuild -scheme Page2 -destination 'platform=macOS' build
+
+# iOS Simulator
+xcodebuild -scheme Page2 -destination 'generic/platform=iOS Simulator' build
 ```
 
 Or open `Page2.xcodeproj` in Xcode and run.
+
+## Installing on an iPhone or iPad without a paid developer account
+
+A free Apple ID is enough to run the app on your own device for 7 days at a time.
+
+1. Open `Page2.xcodeproj` in Xcode.
+2. Select the Page2 target, Signing and Capabilities, and set Team to your
+   personal team (Add an Account with your Apple ID if needed). Xcode uses free
+   provisioning and may need a unique bundle id, for example
+   `com.yourname.page2`.
+3. Plug in the device, pick it as the run destination, and press Run.
+4. On the device, go to Settings, General, VPN and Device Management, and trust
+   your developer certificate.
+
+The free provisioning profile expires after 7 days, so rebuild from Xcode when
+it stops opening. A paid Apple Developer account removes the 7 day limit.
 
 ## First launch
 
