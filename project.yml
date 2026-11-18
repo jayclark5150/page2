@@ -30,11 +30,14 @@ targets:
         # Entitlements only apply to the macOS sandbox build.
         "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]": Page2/Page2.entitlements
         "ENABLE_HARDENED_RUNTIME[sdk=macosx*]": YES
-        # Ad-hoc signing so it builds with no Apple Developer account. For
-        # installing on an iPhone or iPad, open in Xcode and pick your own
-        # personal team under Signing and Capabilities (free provisioning).
+        # macOS: ad-hoc signing so it builds and distributes with no paid account.
         CODE_SIGN_STYLE: Manual
         CODE_SIGN_IDENTITY: "-"
+        # iOS device: automatic signing with the personal (free) team, so Xcode
+        # creates and renews the provisioning profile. Simulator needs no signing.
+        "CODE_SIGN_STYLE[sdk=iphoneos*]": Automatic
+        "CODE_SIGN_IDENTITY[sdk=iphoneos*]": "Apple Development"
+        "DEVELOPMENT_TEAM[sdk=iphoneos*]": "TCDZ22XX74"
         MARKETING_VERSION: "0.2.0"
         CURRENT_PROJECT_VERSION: "2"
   Page2Tests:

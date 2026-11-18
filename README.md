@@ -48,18 +48,21 @@ Or open `Page2.xcodeproj` in Xcode and run.
 ## Installing on an iPhone or iPad without a paid developer account
 
 A free Apple ID is enough to run the app on your own device for 7 days at a time.
+The project is wired to a personal team for iOS, so Xcode creates and renews the
+provisioning profile automatically.
 
 1. Open `Page2.xcodeproj` in Xcode.
-2. Select the Page2 target, Signing and Capabilities, and set Team to your
-   personal team (Add an Account with your Apple ID if needed). Xcode uses free
-   provisioning and may need a unique bundle id, for example
-   `com.yourname.page2`.
-3. Plug in the device, pick it as the run destination, and press Run.
+2. Plug in the device and pick it as the run destination.
+3. Press Run. Xcode creates the profile and installs the app.
 4. On the device, go to Settings, General, VPN and Device Management, and trust
    your developer certificate.
 
-The free provisioning profile expires after 7 days, so rebuild from Xcode when
-it stops opening. A paid Apple Developer account removes the 7 day limit.
+The free provisioning profile expires after 7 days, so press Run again from Xcode
+when the app stops opening. A paid Apple Developer account removes the 7 day limit.
+
+If you are not Jay, change `DEVELOPMENT_TEAM` in `project.yml` to your own team id
+(Xcode, Settings, Accounts) and run `xcodegen`, or just set your team in Signing
+and Capabilities.
 
 ## First launch
 
