@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "note": "Starter outlet list for Page 2. Bias labels are Jay's hand-curated judgments to review and edit. Every feedURL below was fetched and returned a valid RSS or Atom document at seed time. Edit the note field freely. See excludedNote for outlets whose public feeds are dead or blocked.",
+  "excludedNote": "Reuters, Associated Press, Newsmax, and Politico were left out: Reuters and Newsmax public feeds did not respond, AP and Politico returned HTTP 403 to a plain client. Add them later if you find a working feed.",
+  "sources": [
+    {
+      "slug": "guardian-us",
+      "name": "The Guardian (US)",
+      "feedURL": "https://www.theguardian.com/us/rss",
+      "siteURL": "https://www.theguardian.com/us",
+      "bias": "left",
+      "verified": true,
+      "note": "UK outlet with a large US desk. Commonly rated left."
+    },
+    {
+      "slug": "huffpost",
+      "name": "HuffPost",
+      "feedURL": "https://www.huffpost.com/section/front-page/feed",
+      "siteURL": "https://www.huffpost.com",
+      "bias": "left",
+      "verified": true,
+      "note": "Front page feed."
+    },
+    {
+      "slug": "vox",
+      "name": "Vox",
+      "feedURL": "https://www.vox.com/rss/index.xml",
+      "siteURL": "https://www.vox.com",
+      "bias": "left",
+      "verified": true,
+      "note": "Explainer style. Atom feed."
+    },
+    {
+      "slug": "mother-jones",
+      "name": "Mother Jones",
+      "feedURL": "https://www.motherjones.com/feed/",
+      "siteURL": "https://www.motherjones.com",
+      "bias": "left",
+      "verified": true,
+      "note": "Investigative, clearly left."
+    },
+    {
+      "slug": "slate",
+      "name": "Slate",
+      "feedURL": "https://slate.com/feeds/all.rss",
+      "siteURL": "https://slate.com",
+      "bias": "left",
+      "verified": true,
+      "note": "Commentary heavy."
+    },
+    {
+      "slug": "the-atlantic",
+      "name": "The Atlantic",
+      "feedURL": "https://www.theatlantic.com/feed/all/",
+      "siteURL": "https://www.theatlantic.com",
+      "bias": "left",
+      "verified": true,
+      "note": "Often rated left of center. Reconsider if you want it as center."
+    },
+    {
+      "slug": "new-republic",
+      "name": "The New Republic",
+      "feedURL": "https://newrepublic.com/rss.xml",
+      "siteURL": "https://newrepublic.com",
+      "bias": "left",
+      "verified": true,
+      "note": "Opinion forward."
+    },
+    {
+      "slug": "npr",
+      "name": "NPR News",
+      "feedURL": "https://feeds.npr.org/1001/rss.xml",
+      "siteURL": "https://www.npr.org",
+      "bias": "center",
+      "verified": true,
+      "note": "Reporting is broadly center, though several raters place it center-left. Your call."
+    },
+    {
+      "slug": "bbc-us",
+      "name": "BBC News (US & Canada)",
+      "feedURL": "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml",
+      "siteURL": "https://www.bbc.com/news",
+      "bias": "center",
+      "verified": true,
+      "note": "Non US outlet, US and Canada section."
+    },
+    {
+      "slug": "pbs-newshour",
+      "name": "PBS NewsHour",
+      "feedURL": "https://www.pbs.org/newshour/feeds/rss/headlines",
+      "siteURL": "https://www.pbs.org/newshour",
+      "bias": "center",
+      "verified": true,
+      "note": "Headlines feed."
+    },
+    {
+      "slug": "the-hill",
+      "name": "The Hill",
+      "feedURL": "https://thehill.com/rss/syndicator/19110",
+      "siteURL": "https://thehill.com",
+      "bias": "center",
+      "verified": true,
+      "note": "Politics and policy, mostly straight reporting."
+    },
+    {
+      "slug": "csmonitor",
+      "name": "Christian Science Monitor",
+      "feedURL": "https://rss.csmonitor.com/feeds/all",
+      "siteURL": "https://www.csmonitor.com",
+      "bias": "center",
+      "verified": true,
+      "note": "Generally rated center."
+    },
+    {
+      "slug": "axios",
+      "name": "Axios",
+      "feedURL": "https://www.axios.com/feeds/feed.rss",
+      "siteURL": "https://www.axios.com",
+      "bias": "center",
+      "verified": true,
+      "note": "Brief format."
+    },
+    {
+      "slug": "nbc-news",
+      "name": "NBC News",
+      "feedURL": "https://feeds.nbcnews.com/nbcnews/public/news",
+      "siteURL": "https://www.nbcnews.com",
+      "bias": "center",
+      "verified": true,
+      "note": "Some raters place it center-left. Your call."
+    },
+    {
+      "slug": "fox-news",
+      "name": "Fox News",
+      "feedURL": "https://feeds.foxnews.com/foxnews/latest",
+      "siteURL": "https://www.foxnews.com",
+      "bias": "right",
+      "verified": true,
+      "note": "Latest feed."
+    },
+    {
+      "slug": "new-york-post",
+      "name": "New York Post",
+      "feedURL": "https://nypost.com/feed/",
+      "siteURL": "https://nypost.com",
+      "bias": "right",
+      "verified": true,
+      "note": "Tabloid, right leaning."
+    },
+    {
+      "slug": "national-review",
+      "name": "National Review",
+      "feedURL": "https://www.nationalreview.com/feed/",
+      "siteURL": "https://www.nationalreview.com",
+      "bias": "right",
+      "verified": true,
+      "note": "Conservative opinion and reporting."
+    },
+    {
+      "slug": "washington-times",
+      "name": "The Washington Times",
+      "feedURL": "https://www.washingtontimes.com/rss/headlines/news/",
+      "siteURL": "https://www.washingtontimes.com",
+      "bias": "right",
+      "verified": true,
+      "note": "News headlines feed."
+    },
+    {
+      "slug": "daily-wire",
+      "name": "The Daily Wire",
+      "feedURL": "https://www.dailywire.com/feeds/rss.xml",
+      "siteURL": "https://www.dailywire.com",
+      "bias": "right",
+      "verified": true,
+      "note": "Clearly right."
+    },
+    {
+      "slug": "washington-examiner",
+      "name": "Washington Examiner",
+      "feedURL": "https://www.washingtonexaminer.com/tag/news.rss",
+      "siteURL": "https://www.washingtonexaminer.com",
+      "bias": "right",
+      "verified": true,
+      "note": "News tag feed."
+    },
+    {
+      "slug": "reason",
+      "name": "Reason",
+      "feedURL": "https://reason.com/feed/",
+      "siteURL": "https://reason.com",
+      "bias": "right",
+      "verified": true,
+      "note": "Libertarian, not traditional right. Placed right for now, reconsider if you want a separate label."
+    }
+  ]
+}

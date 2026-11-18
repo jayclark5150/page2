@@ -1,0 +1,53 @@
+name: Page2
+options:
+  bundleIdPrefix: com.jayclark
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+targets:
+  Page2:
+    type: application
+    platform: macOS
+    sources:
+      - Page2
+    entitlements:
+      path: Page2/Page2.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.network.client: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.jayclark.page2
+        PRODUCT_NAME: Page2
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Page 2
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.news
+        ENABLE_HARDENED_RUNTIME: YES
+        CODE_SIGN_STYLE: Automatic
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+  Page2Tests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - Page2Tests
+    dependencies:
+      - target: Page2
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.jayclark.page2.tests
+        SWIFT_VERSION: "5.0"
+schemes:
+  Page2:
+    build:
+      targets:
+        Page2: all
+        Page2Tests: [test]
+    test:
+      targets:
+        - Page2Tests
