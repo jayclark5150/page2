@@ -1,13 +1,14 @@
 import SwiftUI
 
 /// One article in a list. Shows the outlet, a bias chip, the headline, a short
-/// summary, and the published time. Opening it launches the default browser.
+/// summary, and the published time. Tapping opens the article inside the app.
 struct ArticleRow: View {
     let article: Article
-    @Environment(\.openURL) private var openURL
 
     var body: some View {
-        Button(action: open) {
+        NavigationLink {
+            ArticleWebView(article: article)
+        } label: {
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: 6) {
                     if let source = article.source {
@@ -33,13 +34,7 @@ struct ArticleRow: View {
                         .lineLimit(2)
                 }
             }
-            .contentShape(Rectangle())
         }
-        .buttonStyle(.plain)
         .padding(.vertical, 2)
-    }
-
-    private func open() {
-        if let url = article.url { openURL(url) }
     }
 }
