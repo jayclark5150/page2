@@ -14,24 +14,28 @@ final class FeedRefresher {
     var sourceErrors: [String: String] = [:]
     /// A top level message for failures that stop the whole refresh.
     var lastError: String?
+    /// Progress during a fetch, for the indicator. completed of total.
+    var progressCompleted = 0
+    var progressTotal = 0
 
-    private let fetcher: FeedFetcher
-    private let clusterer: StoryClusterer
+    private let settingsProvider: @Sendable () -> AppSettings
     /// How far back to pull stories and articles when clustering. Wider than the
     /// 72 hour join window so articles can still find a slightly older story.
     private let clusterLookback: TimeInterval = 5 * 24 * 60 * 60
 
-    init(fetcher: FeedFetcher = FeedFetcher(),
-         clusterer: StoryClusterer = StoryClusterer()) {
-        self.fetcher = fetcher
-        self.clusterer = clusterer
+    init(settingsProvider: @escaping @Sendable () -> AppSettings = { .current }) {
+        self.settingsProvider = settingsProvider
     }
 
     func refresh(context: ModelContext) async {
         guard !isRefreshing else { return }
         isRefreshing = true
         lastError = nil
+        progressCompleted = 0
+        progressTotal = 0
         defer { isRefreshing = false }
+
+        let settings = settingsProvider()
 
         let refs: [FeedSourceRef]
         do {
@@ -46,13 +50,26 @@ final class FeedRefresher {
             return
         }
 
+        progressTotal = refs.count
+
         // Network and parsing happen here, away from the context.
-        let results = await fetcher.fetchAll(refs)
+        let fetcher = FeedFetcher(maxAgeDays: settings.articleAgeDays)
+        let results = await fetcher.fetchAll(refs) { [weak self] done in
+            Task { @MainActor in
+                guard let self else { return }
+                self.progressCompleted = max(self.progressCompleted, done)
+            }
+        }
 
         persist(results, in: context)
-        await clusterUnassignedArticles(in: context)
+
+        let clusterer = StoryClusterer(settings: ClusterSettings(threshold: settings.clusterThreshold))
+        await clusterUnassignedArticles(in: context, clusterer: clusterer)
         lastRefreshedAt = Date()
     }
+
+    /// True when the last refresh had any per source failures.
+    var hasSourceErrors: Bool { !sourceErrors.isEmpty }
 
     private func enabledSourceRefs(in context: ModelContext) throws -> [FeedSourceRef] {
         let descriptor = FetchDescriptor<Source>(predicate: #Predicate { $0.isEnabled })
@@ -122,7 +139,8 @@ final class FeedRefresher {
 
     /// Assigns articles that have no story yet, either into an existing story or
     /// a new one. The TF-IDF math runs off the main actor on value snapshots.
-    private func clusterUnassignedArticles(in context: ModelContext) async {
+    private func clusterUnassignedArticles(in context: ModelContext,
+                                           clusterer: StoryClusterer) async {
         let cutoff = Date().addingTimeInterval(-clusterLookback)
 
         let incomingArticles: [Article]
@@ -153,7 +171,6 @@ final class FeedRefresher {
         var storyByID: [PersistentIdentifier: Story] = [:]
         for story in recentStories { storyByID[story.persistentModelID] = story }
 
-        let clusterer = self.clusterer
         let outcomes = await Task.detached(priority: .userInitiated) {
             clusterer.cluster(existing: existing, incoming: incoming)
         }.value

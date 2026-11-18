@@ -24,6 +24,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.jayclark.page2
         PRODUCT_NAME: Page2
         GENERATE_INFOPLIST_FILE: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         INFOPLIST_KEY_CFBundleDisplayName: Page 2
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.news
         ENABLE_HARDENED_RUNTIME: YES

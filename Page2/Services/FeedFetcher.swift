@@ -36,7 +36,10 @@ struct FeedFetcher {
         self.now = now
     }
 
-    func fetchAll(_ refs: [FeedSourceRef]) async -> [FeedFetchResult] {
+    /// Fetches all refs. onProgress is called with the completed count as each
+    /// source finishes, for a progress indicator.
+    func fetchAll(_ refs: [FeedSourceRef],
+                  onProgress: (@Sendable (Int) -> Void)? = nil) async -> [FeedFetchResult] {
         guard !refs.isEmpty else { return [] }
         var results: [FeedFetchResult] = []
         results.reserveCapacity(refs.count)
@@ -54,6 +57,7 @@ struct FeedFetcher {
             // Each time one finishes, start the next.
             while let result = await group.next() {
                 results.append(result)
+                onProgress?(results.count)
                 if let ref = iterator.next() {
                     group.addTask { await fetchOne(ref) }
                 }
