@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0471891427CE979BC1904172 /* OPMLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4339B77F506842E5EB1988F /* OPMLService.swift */; };
 		091F0F8F4A18E5AD5458C9B1 /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F285E43D93DA25232D78D /* FeedParser.swift */; };
 		2119F422D2C4006769095070 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D97718CD76EA83921678B0 /* ContentView.swift */; };
 		2F94D966C9C4B0380B6258FB /* SourceSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575EC0ABD53E483C2A3A7F1C /* SourceSeeder.swift */; };
@@ -16,10 +17,12 @@
 		3C6F0296C9152084A77D0959 /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4A2CFFF5FA96F8D9E40E43 /* Tokenizer.swift */; };
 		49C0838E1D6AC8E48967CF63 /* Page2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9700F0F9DDE4AF3B3F1535E /* Page2App.swift */; };
 		4F89F7746C0B196142F6C32E /* StoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E12EF0CBC92F18EC9DE619 /* StoryDetailView.swift */; };
+		54786A2173F5A8FE6D8EFAEC /* OPMLDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A11C9E956AA119BFAD8809 /* OPMLDocument.swift */; };
 		5758250919F926C1E677456C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 937D5E29E846719B31F5763C /* Assets.xcassets */; };
 		5BA00D289FA4C6F63BB924FF /* SourceSeederTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAAF506E324B128938837AF /* SourceSeederTests.swift */; };
 		5E69BF31489A64DC0129B18F /* BiasChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82F1508897346B5B7FC69D4 /* BiasChip.swift */; };
 		62262F2B79CFD3706F3D7602 /* ArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EF4B8E1AE9D1A05BDC4807 /* ArticleRow.swift */; };
+		677F54862BD02ECE5F075838 /* OPMLServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B5E91832F8438D6C126757 /* OPMLServiceTests.swift */; };
 		71BA5600709D706C8409DEA9 /* SourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8CC4CF4819730DD21DFEE4 /* SourcesView.swift */; };
 		78D00785B9F95685AB7DB6C5 /* BlindspotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D42A45768606AFCDFD6DA4 /* BlindspotView.swift */; };
 		823B42F4B6688402F5973E50 /* FeedParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFCC353DBF87FB2D567A8B5 /* FeedParserTests.swift */; };
@@ -87,6 +90,7 @@
 		C08BD44B1046D87AAEF890BA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C0E35D450E9C80C406759F33 /* Slug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slug.swift; sourceTree = "<group>"; };
 		C57DA0FD3AF8821F1770EB11 /* Page2.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Page2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5A11C9E956AA119BFAD8809 /* OPMLDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPMLDocument.swift; sourceTree = "<group>"; };
 		C8FBB6A437C0BD3B9BB74C68 /* sources.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sources.json; sourceTree = "<group>"; };
 		CDCFC2007067C37046A47910 /* FeedRefresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefresher.swift; sourceTree = "<group>"; };
 		D186A3047B3FAB31DC70FEB9 /* StoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesView.swift; sourceTree = "<group>"; };
@@ -94,8 +98,10 @@
 		D41B9A260897B7A2C8B8D539 /* BlindspotFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlindspotFinderTests.swift; sourceTree = "<group>"; };
 		E1EF4B8E1AE9D1A05BDC4807 /* ArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRow.swift; sourceTree = "<group>"; };
 		E2852ADA9E3AD085F000E741 /* StoryClusterer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryClusterer.swift; sourceTree = "<group>"; };
+		E3B5E91832F8438D6C126757 /* OPMLServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPMLServiceTests.swift; sourceTree = "<group>"; };
 		F11FA0BFE696F4824F352E9E /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		F3D42A45768606AFCDFD6DA4 /* BlindspotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlindspotView.swift; sourceTree = "<group>"; };
+		F4339B77F506842E5EB1988F /* OPMLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPMLService.swift; sourceTree = "<group>"; };
 		F82F1508897346B5B7FC69D4 /* BiasChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiasChip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +129,7 @@
 				2F5F285E43D93DA25232D78D /* FeedParser.swift */,
 				CDCFC2007067C37046A47910 /* FeedRefresher.swift */,
 				B86D4B8078BD55CA6366DCB6 /* FeedValidator.swift */,
+				F4339B77F506842E5EB1988F /* OPMLService.swift */,
 				C0E35D450E9C80C406759F33 /* Slug.swift */,
 				575EC0ABD53E483C2A3A7F1C /* SourceSeeder.swift */,
 				E2852ADA9E3AD085F000E741 /* StoryClusterer.swift */,
@@ -139,6 +146,7 @@
 				1A72E954717BC488E11547ED /* ArticleWebView.swift */,
 				F3D42A45768606AFCDFD6DA4 /* BlindspotView.swift */,
 				29D97718CD76EA83921678B0 /* ContentView.swift */,
+				C5A11C9E956AA119BFAD8809 /* OPMLDocument.swift */,
 				C08BD44B1046D87AAEF890BA /* SettingsView.swift */,
 				F11FA0BFE696F4824F352E9E /* SidebarItem.swift */,
 				8E8CC4CF4819730DD21DFEE4 /* SourcesView.swift */,
@@ -194,6 +202,7 @@
 			children = (
 				D41B9A260897B7A2C8B8D539 /* BlindspotFinderTests.swift */,
 				4CFCC353DBF87FB2D567A8B5 /* FeedParserTests.swift */,
+				E3B5E91832F8438D6C126757 /* OPMLServiceTests.swift */,
 				07712D3F87AB3713BB4D83EE /* SlugTests.swift */,
 				3EAAF506E324B128938837AF /* SourceSeederTests.swift */,
 				018F8C799D425B5F489C34E6 /* StoryClustererTests.swift */,
@@ -316,6 +325,8 @@
 				091F0F8F4A18E5AD5458C9B1 /* FeedParser.swift in Sources */,
 				DE875F514DD2F03AFD2F4750 /* FeedRefresher.swift in Sources */,
 				AE83DE840E4040E407F9D79D /* FeedValidator.swift in Sources */,
+				54786A2173F5A8FE6D8EFAEC /* OPMLDocument.swift in Sources */,
+				0471891427CE979BC1904172 /* OPMLService.swift in Sources */,
 				49C0838E1D6AC8E48967CF63 /* Page2App.swift in Sources */,
 				C67B06F960C4F52F1973D335 /* SettingsView.swift in Sources */,
 				D68FA87DFF832AAE007A25C5 /* SidebarItem.swift in Sources */,
@@ -339,6 +350,7 @@
 			files = (
 				AA08298388A2E72EBFD3D6BB /* BlindspotFinderTests.swift in Sources */,
 				823B42F4B6688402F5973E50 /* FeedParserTests.swift in Sources */,
+				677F54862BD02ECE5F075838 /* OPMLServiceTests.swift in Sources */,
 				F160453FD4D0416CB8DA19A7 /* SlugTests.swift in Sources */,
 				5BA00D289FA4C6F63BB924FF /* SourceSeederTests.swift in Sources */,
 				914F4AD8FD170CF7722BBDC7 /* StoryClustererTests.swift in Sources */,
