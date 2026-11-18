@@ -16,9 +16,15 @@ final class FeedRefresher {
     var lastError: String?
 
     private let fetcher: FeedFetcher
+    private let clusterer: StoryClusterer
+    /// How far back to pull stories and articles when clustering. Wider than the
+    /// 72 hour join window so articles can still find a slightly older story.
+    private let clusterLookback: TimeInterval = 5 * 24 * 60 * 60
 
-    init(fetcher: FeedFetcher = FeedFetcher()) {
+    init(fetcher: FeedFetcher = FeedFetcher(),
+         clusterer: StoryClusterer = StoryClusterer()) {
         self.fetcher = fetcher
+        self.clusterer = clusterer
     }
 
     func refresh(context: ModelContext) async {
@@ -44,6 +50,7 @@ final class FeedRefresher {
         let results = await fetcher.fetchAll(refs)
 
         persist(results, in: context)
+        await clusterUnassignedArticles(in: context)
         lastRefreshedAt = Date()
     }
 
@@ -109,5 +116,83 @@ final class FeedRefresher {
         var descriptor = FetchDescriptor<Source>(predicate: #Predicate { $0.slug == slug })
         descriptor.fetchLimit = 1
         return (try? context.fetch(descriptor))?.first
+    }
+
+    // MARK: Clustering
+
+    /// Assigns articles that have no story yet, either into an existing story or
+    /// a new one. The TF-IDF math runs off the main actor on value snapshots.
+    private func clusterUnassignedArticles(in context: ModelContext) async {
+        let cutoff = Date().addingTimeInterval(-clusterLookback)
+
+        let incomingArticles: [Article]
+        let recentStories: [Story]
+        do {
+            incomingArticles = try context.fetch(FetchDescriptor<Article>(
+                predicate: #Predicate { $0.story == nil && $0.publishedAt > cutoff }
+            ))
+            recentStories = try context.fetch(FetchDescriptor<Story>(
+                predicate: #Predicate { $0.updatedAt > cutoff }
+            ))
+        } catch {
+            lastError = "Could not load articles for clustering: \(error)"
+            return
+        }
+        guard !incomingArticles.isEmpty else { return }
+
+        // Snapshots keep SwiftData models off the background task.
+        let incoming = incomingArticles.map(snapshot(of:))
+        let existing = recentStories.map { story in
+            ExistingCluster(storyID: story.persistentModelID,
+                            members: story.articles.map(snapshot(of:)))
+        }
+
+        // Look up tables to apply the result on the main actor.
+        var articleByID: [PersistentIdentifier: Article] = [:]
+        for article in incomingArticles { articleByID[article.persistentModelID] = article }
+        var storyByID: [PersistentIdentifier: Story] = [:]
+        for story in recentStories { storyByID[story.persistentModelID] = story }
+
+        let clusterer = self.clusterer
+        let outcomes = await Task.detached(priority: .userInitiated) {
+            clusterer.cluster(existing: existing, incoming: incoming)
+        }.value
+
+        apply(outcomes, articleByID: articleByID, storyByID: storyByID, in: context)
+    }
+
+    private func snapshot(of article: Article) -> ClusterDoc<PersistentIdentifier> {
+        ClusterDoc(id: article.persistentModelID,
+                   title: article.title,
+                   summary: article.summary,
+                   sourceSlug: article.source?.slug ?? "",
+                   publishedAt: article.publishedAt)
+    }
+
+    private func apply(_ outcomes: [ClusterOutcome<PersistentIdentifier>],
+                       articleByID: [PersistentIdentifier: Article],
+                       storyByID: [PersistentIdentifier: Story],
+                       in context: ModelContext) {
+        let now = Date()
+        for outcome in outcomes {
+            let story: Story
+            if let id = outcome.existingStoryID, let existing = storyByID[id] {
+                story = existing
+            } else {
+                story = Story(headline: outcome.headline)
+                context.insert(story)
+            }
+            story.headline = outcome.headline
+            for articleID in outcome.addedIDs {
+                articleByID[articleID]?.story = story
+            }
+            story.updatedAt = now
+        }
+
+        do {
+            if context.hasChanges { try context.save() }
+        } catch {
+            lastError = "Could not save stories: \(error)"
+        }
     }
 }
