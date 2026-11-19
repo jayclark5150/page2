@@ -191,6 +191,285 @@
       "bias": "right",
       "verified": true,
       "note": "Libertarian, not traditional right. Placed right for now, reconsider if you want a separate label."
+    },
+    {
+      "slug": "ms-now",
+      "name": "MS NOW (formerly MSNBC)",
+      "feedURL": "https://www.ms.now/feed",
+      "siteURL": "https://www.ms.now",
+      "bias": "left",
+      "verified": false,
+      "note": "AllSides: Left, medium confidence as of June 2026."
+    },
+    {
+      "slug": "nation",
+      "name": "The Nation",
+      "feedURL": "https://www.thenation.com/rss1/",
+      "siteURL": "https://www.thenation.com",
+      "bias": "left",
+      "verified": true,
+      "note": "AllSides: Left; review April 2022."
+    },
+    {
+      "slug": "intercept",
+      "name": "The Intercept",
+      "feedURL": "https://theintercept.com/feeds/",
+      "siteURL": "https://theintercept.com",
+      "bias": "left",
+      "verified": true,
+      "note": "AllSides: Left, initial confidence as of June 2026."
+    },
+    {
+      "slug": "democracy-now",
+      "name": "Democracy Now!",
+      "feedURL": "https://www.democracynow.org/democracynow.rss",
+      "siteURL": "https://www.democracynow.org",
+      "bias": "left",
+      "verified": true,
+      "note": "AllSides: Left; review February 2022."
+    },
+    {
+      "slug": "daily-beast",
+      "name": "The Daily Beast",
+      "feedURL": "https://www.thedailybeast.com/arc/outboundfeeds/rss/articles/",
+      "siteURL": "https://www.thedailybeast.com",
+      "bias": "left",
+      "verified": true,
+      "note": "AllSides: Left, high confidence as of June 2026."
+    },
+    {
+      "slug": "cnn",
+      "name": "CNN",
+      "feedURL": "http://rss.cnn.com/rss/edition.rss",
+      "siteURL": "https://www.cnn.com",
+      "bias": "left",
+      "verified": false,
+      "note": "Rated lean left. AllSides: CNN Digital, Lean Left, high confidence as of June 2026; feed is the International Edition and often stale."
+    },
+    {
+      "slug": "new-york-times",
+      "name": "The New York Times",
+      "feedURL": "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
+      "siteURL": "https://www.nytimes.com",
+      "bias": "left",
+      "verified": false,
+      "note": "Rated lean left. AllSides: News section Lean Left (opinion rated Left separately)."
+    },
+    {
+      "slug": "washington-post",
+      "name": "The Washington Post",
+      "feedURL": "https://feeds.washingtonpost.com/rss/national",
+      "siteURL": "https://www.washingtonpost.com",
+      "bias": "left",
+      "verified": false,
+      "note": "Rated lean left. AllSides: Lean Left, high confidence as of May 2024."
+    },
+    {
+      "slug": "abc-news",
+      "name": "ABC News",
+      "feedURL": "https://abcnews.com/abcnews/topstories",
+      "siteURL": "https://abcnews.com",
+      "bias": "left",
+      "verified": true,
+      "note": "Rated lean left. AllSides: Online, Lean Left, high confidence as of June 2026."
+    },
+    {
+      "slug": "cbs-news",
+      "name": "CBS News",
+      "feedURL": "https://www.cbsnews.com/latest/rss/main",
+      "siteURL": "https://www.cbsnews.com",
+      "bias": "left",
+      "verified": true,
+      "note": "Rated lean left. AllSides: Online, Lean Left, high confidence as of June 2026; AllSides is watching for a shift."
+    },
+    {
+      "slug": "time",
+      "name": "Time",
+      "feedURL": "https://time.com/feed/",
+      "siteURL": "https://time.com",
+      "bias": "left",
+      "verified": true,
+      "note": "Rated lean left. AllSides: Lean Left, high confidence as of June 2026."
+    },
+    {
+      "slug": "al-jazeera-english",
+      "name": "Al Jazeera English",
+      "feedURL": "https://www.aljazeera.com/xml/rss/all.xml",
+      "siteURL": "https://www.aljazeera.com",
+      "bias": "left",
+      "verified": true,
+      "note": "Rated lean left. AllSides: Lean Left, initial confidence; review June 2022."
+    },
+    {
+      "slug": "wall-street-journal",
+      "name": "The Wall Street Journal (News)",
+      "feedURL": "https://feeds.content.dowjones.io/public/rss/RSSWorldNews",
+      "siteURL": "https://www.wsj.com",
+      "bias": "center",
+      "verified": true,
+      "note": "AllSides: Center, news only (opinion section rated differently)."
+    },
+    {
+      "slug": "forbes",
+      "name": "Forbes",
+      "feedURL": "https://www.forbes.com/business/feed/",
+      "siteURL": "https://www.forbes.com",
+      "bias": "center",
+      "verified": true,
+      "note": "AllSides: Center; business section feed, no general top-news feed."
+    },
+    {
+      "slug": "newsnation",
+      "name": "NewsNation",
+      "feedURL": "https://www.newsnationnow.com/feed/",
+      "siteURL": "https://www.newsnationnow.com",
+      "bias": "center",
+      "verified": true,
+      "note": "AllSides: Center; blind bias survey November 2023."
+    },
+    {
+      "slug": "marketwatch",
+      "name": "MarketWatch",
+      "feedURL": "https://feeds.content.dowjones.io/public/rss/mw_topstories",
+      "siteURL": "https://www.marketwatch.com",
+      "bias": "center",
+      "verified": true,
+      "note": "AllSides: Center; editorial review October 2020."
+    },
+    {
+      "slug": "upi",
+      "name": "UPI",
+      "feedURL": "https://rss.upi.com/news/top_news.rss",
+      "siteURL": "https://www.upi.com",
+      "bias": "center",
+      "verified": true,
+      "note": "AllSides: Center, initial confidence; review July 2022."
+    },
+    {
+      "slug": "economist",
+      "name": "The Economist",
+      "feedURL": "https://www.economist.com/latest/rss.xml",
+      "siteURL": "https://www.economist.com",
+      "bias": "center",
+      "verified": false,
+      "note": "Ad Fontes Media: Ad Fontes 'Middle' mapped to center; AllSides page would not load."
+    },
+    {
+      "slug": "dispatch",
+      "name": "The Dispatch",
+      "feedURL": "https://thedispatch.com/feed/",
+      "siteURL": "https://thedispatch.com",
+      "bias": "right",
+      "verified": true,
+      "note": "Rated lean right. AllSides: Lean Right, medium confidence as of June 2026."
+    },
+    {
+      "slug": "free-press",
+      "name": "The Free Press",
+      "feedURL": "https://www.thefp.com/feed",
+      "siteURL": "https://www.thefp.com",
+      "bias": "right",
+      "verified": true,
+      "note": "Rated lean right. Ad Fontes Media: Ad Fontes 'Skews Right' mapped to leanRight; AllSides results conflict."
+    },
+    {
+      "slug": "realclearpolitics",
+      "name": "RealClearPolitics",
+      "feedURL": "https://www.realclearpolitics.com/index.xml",
+      "siteURL": "https://www.realclearpolitics.com",
+      "bias": "right",
+      "verified": true,
+      "note": "Rated lean right. AllSides: Original content Lean Right, initial confidence; the aggregator is rated Center separately."
+    },
+    {
+      "slug": "epoch-times",
+      "name": "The Epoch Times",
+      "feedURL": "https://feed.theepochtimes.com/us/feed",
+      "siteURL": "https://www.theepochtimes.com",
+      "bias": "right",
+      "verified": true,
+      "note": "Rated lean right. AllSides: Lean Right since 2022; some AllSides pages still show Right; feed is US News section."
+    },
+    {
+      "slug": "fox-business",
+      "name": "Fox Business",
+      "feedURL": "https://moxie.foxbusiness.com/google-publisher/latest.xml",
+      "siteURL": "https://www.foxbusiness.com",
+      "bias": "right",
+      "verified": false,
+      "note": "Rated lean right. AllSides: Online news Lean Right; review July 2022."
+    },
+    {
+      "slug": "american-conservative",
+      "name": "The American Conservative",
+      "feedURL": "https://www.theamericanconservative.com/feed/",
+      "siteURL": "https://www.theamericanconservative.com",
+      "bias": "right",
+      "verified": true,
+      "note": "Rated lean right. AllSides: Lean Right since April 2026 review (was Right)."
+    },
+    {
+      "slug": "breitbart",
+      "name": "Breitbart",
+      "feedURL": "https://feeds.feedburner.com/breitbart",
+      "siteURL": "https://www.breitbart.com",
+      "bias": "right",
+      "verified": true,
+      "note": "Ad Fontes Media: Ad Fontes 'Strong Right' mapped to right; AllSides page would not load; feed is the Feedburner link in the site footer."
+    },
+    {
+      "slug": "federalist",
+      "name": "The Federalist",
+      "feedURL": "https://thefederalist.com/feed/",
+      "siteURL": "https://thefederalist.com",
+      "bias": "right",
+      "verified": true,
+      "note": "AllSides: Right, high confidence as of April 2024."
+    },
+    {
+      "slug": "daily-caller",
+      "name": "The Daily Caller",
+      "feedURL": "https://dailycaller.com/feed/",
+      "siteURL": "https://dailycaller.com",
+      "bias": "right",
+      "verified": true,
+      "note": "AllSides: Right, high confidence as of July 2024."
+    },
+    {
+      "slug": "theblaze",
+      "name": "TheBlaze",
+      "feedURL": "https://www.theblaze.com/feeds/feed.rss",
+      "siteURL": "https://www.theblaze.com",
+      "bias": "right",
+      "verified": true,
+      "note": "AllSides: Right; confirmed May 2023 survey."
+    },
+    {
+      "slug": "townhall",
+      "name": "Townhall",
+      "feedURL": "https://townhall.com/feed/",
+      "siteURL": "https://townhall.com",
+      "bias": "right",
+      "verified": true,
+      "note": "AllSides: Right, medium confidence as of June 2026."
+    },
+    {
+      "slug": "washington-free-beacon",
+      "name": "Washington Free Beacon",
+      "feedURL": "https://freebeacon.com/feed/",
+      "siteURL": "https://freebeacon.com",
+      "bias": "right",
+      "verified": true,
+      "note": "AllSides: Right, high confidence as of April 2024."
+    },
+    {
+      "slug": "american-spectator",
+      "name": "The American Spectator",
+      "feedURL": "https://spectator.org/feed/",
+      "siteURL": "https://spectator.org",
+      "bias": "right",
+      "verified": true,
+      "note": "AllSides: Right, initial confidence as of June 2026."
     }
   ]
 }
