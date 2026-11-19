@@ -1,4 +1,6 @@
 .DS_Store
+# macOS AppleDouble sidecars (regenerated on exFAT volumes)
+._*
 *.xcodeproj/xcuserdata/
 *.xcworkspace/xcuserdata/
 xcuserdata/
