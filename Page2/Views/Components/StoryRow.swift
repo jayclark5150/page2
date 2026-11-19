@@ -18,10 +18,18 @@ struct StoryRow: View {
                 .font(.headline)
                 .lineLimit(2)
 
-            HStack(spacing: 10) {
+            HStack(spacing: 6) {
                 Text(outletText)
                     .font(.caption)
                     .foregroundStyle(.secondary)
+                if let published = story.latestPublishedAt {
+                    Text("·")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Text(published.formatted(date: .abbreviated, time: .shortened))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
                 Spacer()
                 BiasBar(left: story.outletCount(for: .left),
                         center: story.outletCount(for: .center),

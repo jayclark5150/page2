@@ -30,4 +30,9 @@ final class Story {
     var totalOutletCount: Int {
         Set(articles.compactMap { $0.source?.slug }).count
     }
+
+    /// The most recent publication time across all coverage of this story.
+    var latestPublishedAt: Date? {
+        articles.map { $0.publishedAt }.max()
+    }
 }

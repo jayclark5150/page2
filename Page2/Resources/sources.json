@@ -96,7 +96,7 @@
     {
       "slug": "the-hill",
       "name": "The Hill",
-      "feedURL": "https://thehill.com/rss/syndicator/19110",
+      "feedURL": "https://thehill.com/news/feed/",
       "siteURL": "https://thehill.com",
       "bias": "center",
       "verified": true,
