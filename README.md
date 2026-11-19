@@ -13,7 +13,7 @@ brew tap jayclark5150/tap
 brew install --cask page2
 ```
 
-Or download `Page2-0.4.0.dmg` from the
+Or download `Page2-0.4.1.dmg` from the
 [latest release](https://github.com/jayclark5150/page2/releases/latest), open it,
 and drag Page 2 into Applications. See First launch below to get past Gatekeeper.
 
@@ -25,7 +25,8 @@ down.
 - Reads RSS 2.0 and Atom feeds from a curated list of outlets.
 - Clusters related articles into stories with hand written TF-IDF and cosine
   similarity. No machine learning frameworks.
-- Bias labels come from a hand curated JSON source list in `Page2/Resources`.
+- Bias labels come from a hand curated JSON source list in `Page2/Resources`,
+  and you can change any outlet's bias in the app by tapping its chip.
 - Stories view with a per story bias bar, search, and a bias filter.
 - Story detail groups coverage under Left, Center, and Right.
 - Blindspot view for stories where one side barely reported.
