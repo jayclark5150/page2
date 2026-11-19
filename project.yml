@@ -38,8 +38,8 @@ targets:
         "CODE_SIGN_STYLE[sdk=iphoneos*]": Automatic
         "CODE_SIGN_IDENTITY[sdk=iphoneos*]": "Apple Development"
         "DEVELOPMENT_TEAM[sdk=iphoneos*]": "TCDZ22XX74"
-        MARKETING_VERSION: "0.3.0"
-        CURRENT_PROJECT_VERSION: "4"
+        MARKETING_VERSION: "0.4.0"
+        CURRENT_PROJECT_VERSION: "5"
   Page2Tests:
     type: bundle.unit-test
     platform: macOS
