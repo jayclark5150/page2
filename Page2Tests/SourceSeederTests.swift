@@ -44,6 +44,28 @@ final class SourceSeederTests: XCTestCase {
     }
 
     @MainActor
+    func testUserEditedBiasSurvivesReseed() throws {
+        let context = try makeContext()
+        let seeder = SourceSeeder()
+        try seeder.seed(into: context)
+
+        // Edit a seeded outlet's bias and mark it user edited.
+        let edited = try XCTUnwrap(try context.fetch(FetchDescriptor<Source>()).first)
+        let slug = edited.slug
+        let newBias: Bias = edited.bias == .left ? .right : .left
+        edited.bias = newBias
+        edited.isUserEdited = true
+        try context.save()
+
+        try seeder.seed(into: context)
+
+        let after = try context.fetch(
+            FetchDescriptor<Source>(predicate: #Predicate { $0.slug == slug })
+        ).first
+        XCTAssertEqual(after?.bias, newBias, "A user edited bias is not overwritten by the seeder")
+    }
+
+    @MainActor
     func testUserAddedSourceIsUntouchedBySeeder() throws {
         let context = try makeContext()
         let user = Source(slug: "my-blog", name: "My Blog",

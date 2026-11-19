@@ -14,6 +14,9 @@ final class Source {
     var lastFetchedAt: Date?
     /// True for outlets the user added in the app. The JSON seeder never touches these.
     var isUserAdded: Bool = false
+    /// True once the user edits a seeded outlet (for example its bias), so the
+    /// seeder stops overwriting their choice on the next launch.
+    var isUserEdited: Bool = false
     /// Soft delete tombstone. Hidden from the UI and skipped on fetch, and it
     /// stops the seeder from resurrecting an outlet the user removed.
     var isDeleted: Bool = false

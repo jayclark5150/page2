@@ -73,7 +73,7 @@ struct SourceSeeder {
             if let source = existing {
                 // Leave user owned records alone: never touch an outlet the user
                 // added, and never resurrect or edit one the user removed.
-                if source.isUserAdded || source.isDeleted { continue }
+                if source.isUserAdded || source.isDeleted || source.isUserEdited { continue }
                 // Update curated fields, but leave isEnabled and lastFetchedAt alone.
                 source.name = seed.name
                 source.feedURLString = seed.feedURL

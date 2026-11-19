@@ -153,6 +153,7 @@ struct SourcesView: View {
 }
 
 private struct SourceRow: View {
+    @Environment(\.modelContext) private var modelContext
     @Bindable var source: Source
 
     var body: some View {
@@ -160,7 +161,7 @@ private struct SourceRow: View {
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: 6) {
                     Text(source.name).font(.body.weight(.medium))
-                    BiasChip(bias: source.bias)
+                    biasMenu
                     if source.isUserAdded {
                         Text("Added")
                             .font(.caption2.weight(.semibold))
@@ -179,6 +180,33 @@ private struct SourceRow: View {
                 .toggleStyle(.switch)
         }
         .padding(.vertical, 2)
+    }
+
+    /// Tap the bias chip to change left, center, or right. Editing a seeded
+    /// outlet marks it so the seeder stops overwriting the choice.
+    private var biasMenu: some View {
+        Menu {
+            ForEach(Bias.allCases) { option in
+                Button {
+                    guard source.bias != option else { return }
+                    source.bias = option
+                    source.isUserEdited = true
+                    try? modelContext.save()
+                } label: {
+                    if source.bias == option {
+                        Label(option.label, systemImage: "checkmark")
+                    } else {
+                        Text(option.label)
+                    }
+                }
+            }
+        } label: {
+            BiasChip(bias: source.bias)
+        }
+        .menuIndicator(.hidden)
+        .buttonStyle(.plain)
+        .fixedSize()
+        .help("Change bias")
     }
 
     private var lastFetchedText: String {
