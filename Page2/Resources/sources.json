@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "note": "Starter outlet list for Page 2. Bias labels are Jay's hand-curated judgments to review and edit. Every feedURL below was fetched and returned a valid RSS or Atom document at seed time. Edit the note field freely. See excludedNote for outlets whose public feeds are dead or blocked.",
-  "excludedNote": "Reuters, Associated Press, Newsmax, and Politico were left out: Reuters and Newsmax public feeds did not respond, AP and Politico returned HTTP 403 to a plain client. Add them later if you find a working feed.",
+  "excludedNote": "Reuters, Associated Press, Newsmax, Politico, and CNN were left out: Reuters and Newsmax public feeds did not respond, AP and Politico returned HTTP 403 to a plain client, and CNN's only public feed is cleartext http (rss.cnn.com) which App Transport Security blocks in the sandboxed app. Add them later if you find a working https feed.",
   "sources": [
     {
       "slug": "guardian-us",
@@ -236,15 +236,6 @@
       "bias": "left",
       "verified": true,
       "note": "AllSides: Left, high confidence as of June 2026."
-    },
-    {
-      "slug": "cnn",
-      "name": "CNN",
-      "feedURL": "http://rss.cnn.com/rss/edition.rss",
-      "siteURL": "https://www.cnn.com",
-      "bias": "left",
-      "verified": false,
-      "note": "Rated lean left. AllSides: CNN Digital, Lean Left, high confidence as of June 2026; feed is the International Edition and often stale."
     },
     {
       "slug": "new-york-times",
